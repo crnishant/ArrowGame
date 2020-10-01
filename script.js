@@ -66,6 +66,7 @@ document.getElementById("start").onclick = function() {
 	document.getElementById("startScreen").classList.add("hidden");
 	document.getElementById("game").classList.remove("hidden");
 	updateScore();
+	//updateGame();
 	setInterval(updateGame,1000);
 }
 
