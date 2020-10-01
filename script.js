@@ -1,4 +1,4 @@
-const timeLimit = 5;
+const timeLimit = 3;
 var score = 0;
 var gameState = "active";
 var scoreInc = false;
@@ -6,6 +6,7 @@ var seconds = timeLimit;
 let arrows = ["bluedownarrow", "blueleftarrow", "bluerightarrow", "blueuparrow",
 "reddownarrow", "redleftarrow", "redrightarrow", "reduparrow"];
 let currentImage = arrows[0];
+var interval;
 
 function updateGame(){
 	document.getElementById("gameboard").innerHTML = "";
@@ -51,8 +52,10 @@ function updateGame(){
 }
 
 function endGame(){
+	clearInterval(interval);
 	document.getElementById("game").classList.add("hidden");
 	document.getElementById("end").classList.remove("hidden");
+	document.getElementById("gameover").innerHTML = "Score: " + score;
 }
 
 function updateClock(){
@@ -82,19 +85,19 @@ function createNewImage(){
 }
 
 document.getElementById("start").onclick = function() {
+	seconds = timeLimit;
+	scoreInc = false;
+	score = 0;
 	document.getElementById("startScreen").classList.add("hidden");
 	document.getElementById("game").classList.remove("hidden");
 	updateScore();
-	//updateGame();
-	setInterval(updateGame,1000);
+	interval = setInterval(updateGame,1000);
 }
 
 document.getElementById("playagain").onclick = function() {
-	seconds = timeLimit;
-	score = 0;
-	scoreInc = false;
+	seconds = 1;
 	document.getElementById("end").classList.add("hidden");
-	document.getElementById("game").classList.remove("hidden");
+	document.getElementById("startScreen").classList.remove("hidden");
 }
 
 
