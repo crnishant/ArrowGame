@@ -1,7 +1,8 @@
-var playerInput = document.getElementById("playerAnswer");
+const timeLimit = 5;
 var score = 0;
 var gameState = "active";
 var scoreInc = false;
+var seconds = timeLimit;
 let arrows = ["bluedownarrow", "blueleftarrow", "bluerightarrow", "blueuparrow",
 "reddownarrow", "redleftarrow", "redrightarrow", "reduparrow"];
 let currentImage = arrows[0];
@@ -9,6 +10,7 @@ let currentImage = arrows[0];
 function updateGame(){
 	document.getElementById("gameboard").innerHTML = "";
 	setTimeout(createNewImage, 500);
+	updateClock();
 	document.addEventListener("keyup", event => {
 		if(event.keyCode== 37 && scoreInc){
 			//console.log("left");
@@ -43,10 +45,27 @@ function updateGame(){
 			scoreInc = false;
 		}
 	});
+	if(seconds == -2){
+		endGame();
+	}
+}
+
+function endGame(){
+	document.getElementById("game").classList.add("hidden");
+	document.getElementById("end").classList.remove("hidden");
+}
+
+function updateClock(){
+	document.getElementById("clock").innerHTML = "Clock:";
+	var clockDisplay = document.createElement("p");
+	clockDisplay.innerText = seconds;
+	seconds = seconds -1;
+	var board = document.getElementById("clock");
+	board.appendChild(clockDisplay);
 }
 
 function updateScore(){
-	document.getElementById("scoreboard").innerHTML = "Scores:";
+	document.getElementById("scoreboard").innerHTML = "Score:";
 	var scoreDisplay = document.createElement("p");
 	scoreDisplay.innerText = score;
 	var board = document.getElementById("scoreboard");
@@ -68,6 +87,14 @@ document.getElementById("start").onclick = function() {
 	updateScore();
 	//updateGame();
 	setInterval(updateGame,1000);
+}
+
+document.getElementById("playagain").onclick = function() {
+	seconds = timeLimit;
+	score = 0;
+	scoreInc = false;
+	document.getElementById("end").classList.add("hidden");
+	document.getElementById("game").classList.remove("hidden");
 }
 
 
