@@ -62,11 +62,11 @@ function createNewImage(){
 	scoreInc = true;
 }
 
-function start(){
-	var self = this;
+document.getElementById("start").onclick = function() {
+	document.getElementById("startScreen").classList.add("hidden");
+	document.getElementById("game").classList.remove("hidden");
 	updateScore();
 	setInterval(updateGame,1000);
 }
 
-start();
 
