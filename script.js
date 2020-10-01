@@ -14,35 +14,43 @@ function updateGame(){
 			//console.log("left");
 			if(currentImage=="blueleftarrow" || currentImage == "redrightarrow"){
 				score+=100;
+				updateScore();
 			}
-			scoreInc = false;
-			console.log(score);
+			scoreInc = false; 
 		}
 		else if(event.which == 39 && scoreInc){
 			//console.log("right");
 			if(currentImage=="bluerightarrow" || currentImage == "redleftarrow"){
 				score+=100;
+				updateScore();
 			}
 			scoreInc = false;
-			console.log(score);
 		}
 		else if(event.which == 38 && scoreInc){
 			//console.log("up");
 			if(currentImage=="blueuparrow" || currentImage == "reddownarrow"){
 				score+=100;
+				updateScore();
 			}
 			scoreInc = false;
-			console.log(score);
 		}
 		else if(event.which == 40 && scoreInc){
 			//console.log("down");
 			if(currentImage=="bluedownarrow" || currentImage == "reduparrow"){
 				score+=100;
+				updateScore();
 			}
 			scoreInc = false;
-			console.log(score);
 		}
 	});
+}
+
+function updateScore(){
+	document.getElementById("scoreboard").innerHTML = "Scores:";
+	var scoreDisplay = document.createElement("p");
+	scoreDisplay.innerText = score;
+	var board = document.getElementById("scoreboard");
+	board.appendChild(scoreDisplay);
 }
 
 function createNewImage(){
@@ -56,6 +64,7 @@ function createNewImage(){
 
 function start(){
 	var self = this;
+	updateScore();
 	setInterval(updateGame,1000);
 }
 
