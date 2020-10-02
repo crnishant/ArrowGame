@@ -1,4 +1,4 @@
-const timeLimit = 3;
+const timeLimit = 10;
 var score = 0;
 var gameState = "active";
 var scoreInc = false;
@@ -94,10 +94,20 @@ document.getElementById("start").onclick = function() {
 	interval = setInterval(updateGame,1000);
 }
 
+document.getElementById("multiplayer").onclick = function() {
+	document.getElementById("startScreen").classList.add("hidden");
+	document.getElementById("multiplayerLobby").classList.remove("hidden");
+}
+
 document.getElementById("playagain").onclick = function() {
 	seconds = 1;
 	document.getElementById("end").classList.add("hidden");
 	document.getElementById("startScreen").classList.remove("hidden");
+}
+
+document.getElementById("backtostart").onclick = function() {
+	document.getElementById("startScreen").classList.remove("hidden");
+	document.getElementById("multiplayerLobby").classList.add("hidden");
 }
 
 
