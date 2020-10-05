@@ -60,6 +60,30 @@
 				</div>
 			  </div>
 		</div>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBGGzqihUXUyd-MUqHcUCLLe3SOKia5PnY",
+    authDomain: "arrowsgame-964e6.firebaseapp.com",
+    databaseURL: "https://arrowsgame-964e6.firebaseio.com",
+    projectId: "arrowsgame-964e6",
+    storageBucket: "arrowsgame-964e6.appspot.com",
+    messagingSenderId: "1048495470695",
+    appId: "1:1048495470695:web:f0bc5ce45e207227d97cc2",
+    measurementId: "G-9TH99S37V0"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 	</body>
 	<script src="script.js"></script>
 </html>
